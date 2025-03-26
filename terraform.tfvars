@@ -1,0 +1,5 @@
+gcp_project = "devops-practice-sm"
+gcp_region = "us-east4"
+gcp_zone = "us-east4-a"
+instance_name = "terraform-vm"
+machine_type  = "e2-medium"
