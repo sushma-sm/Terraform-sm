@@ -1,4 +1,9 @@
 terraform {
+  backend "gcs" {
+    bucket  = "terraform-state-devops-sm"  # Replace with your GCS bucket name
+    prefix  = "terraform/state"
+  }
+
   required_providers {
     google = {
       source  = "hashicorp/google"
@@ -6,17 +11,13 @@ terraform {
     }
   }
 }
-  backend "gcs" {
-    bucket  = "my-terraform-bucket-sm1"  
-    prefix  = "terraform/state"
-  }
-}
+
 provider "google" {
-    project = var.gcp_project
-    region = var.gcp_region
-    zone = var.gcp_zone
-  
+  project = var.gcp_project
+  region  = var.gcp_region
+  zone    = var.gcp_zone
 }
+
 resource "google_compute_instance" "vm" {
   name         = var.instance_name
   machine_type = var.machine_type
