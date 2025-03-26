@@ -6,7 +6,11 @@ terraform {
     }
   }
 }
-
+  backend "gcs" {
+    bucket  = "my-terraform-bucket-sm1"  
+    prefix  = "terraform/state"
+  }
+}
 provider "google" {
     project = var.gcp_project
     region = var.gcp_region
